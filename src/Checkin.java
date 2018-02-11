@@ -4,6 +4,7 @@
 //package train;
 
 import java.sql.*;
+import com.mvc.util.*;
 /**
  * @author kevingates
  *
@@ -16,18 +17,17 @@ public class Checkin {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {  
-			Class.forName("com.mysql.jdbc.Driver");  
-			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://172.100.0.20:3306/robo2_1228?useSSL=false","root","1");  
-		
-			Statement stmt=con.createStatement();  
+			//Connection conn = DBConnection.createConnection();
+			DBConnectionNoneStatic DBConnectionNoneStatic1 = new DBConnectionNoneStatic();
+			Connection conn = DBConnectionNoneStatic1.createConnection();
+			
+			Statement stmt=conn.createStatement();  
 			ResultSet rs=stmt.executeQuery("select * from users order by id desc limit 20");  
 			while(rs.next())  
 			System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  ");  			
-			con.close();  
-			
+			conn.close();  			
 		} catch(Exception e) { 
 			System.out.println(e);
 		} 
-	}
+	}	
 }
