@@ -1,3 +1,5 @@
 It's important to add:
 
-add mysql connector.jar
+add mysql connector.jar in right-clikc project
+then build path
+then lib
